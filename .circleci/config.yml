@@ -4,7 +4,7 @@ defaults: &node
 
 defaults: &docker
   docker:
-    - image: flight-info-api
+    - image: andspuds/flight-info-api
       environment:
         APP_NAME: node-express-service
         IMAGE_NAME: andspuds/flight-info-api
