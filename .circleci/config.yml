@@ -60,3 +60,13 @@ jobs:
               else
                   echo Skipping this step as we are not on 'master' branch
               fi
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - docker:
+          context: default
+          requires:
+            - build
