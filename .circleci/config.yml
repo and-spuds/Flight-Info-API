@@ -1,0 +1,27 @@
+defaults: &node
+  docker:
+    - image: circleci/node:8
+
+version: 2
+jobs:
+  build:
+    <<: *node
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - save_cache:
+          key: dependencies-{{ checksum "package.json" }}
+          paths:
+            - ~/node_modules
+      - run:
+          name: Check code formatting
+          command: yarn lint
+      - run:
+          name: Run tests and upload to Codecov
+          command: |
+            yarn test
+            bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
