@@ -2,6 +2,13 @@ defaults: &node
   docker:
     - image: circleci/node:8
 
+defaults: &docker
+  docker:
+    - image: quay.io/paulpop/docker-compose
+      environment:
+        APP_NAME: node-express-service
+        IMAGE_NAME: quay.io/paulpop/node-express-service
+
 version: 2
 jobs:
   build:
