@@ -53,10 +53,13 @@ jobs:
         - run:
             name: Push image to Dockerhub
             command: |
-              docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
-              docker push docker.io/andspuds/flight-info-api:$CIRCLE_SHA1
-              docker push docker.io/andspuds/flight-info-api
-              echo Skipping this step as we are not on 'master' branch
+              if [[ $CIRCLE_BRANCH == 'master' ]]; then
+                  docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
+                  docker push docker.io/andspuds/flight-info-api:$CIRCLE_SHA1
+                  docker push docker.io/andspuds/flight-info-api
+              else
+                  echo Skipping this step as we are not on 'master' branch
+              fi
 
 workflows:
   version: 2
