@@ -31,7 +31,7 @@ jobs:
           name: Run tests and upload to Codecov
           command: |
             yarn test
-            bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
+            bash <(curl -s https://codecov.io/bash)
 
   docker:
       <<: *docker
@@ -42,7 +42,7 @@ jobs:
             at: .
         - run:
             name: Build container with the git commit sha version and latest version
-            command: docker build -t $IMAGE_NAME:$CIRCLE_SHA1 -t $IMAGE_NAME .
+            command: docker build -t andspuds/flight-info-api:$CIRCLE_SHA1 -t andspuds/flight-info-api .
         - run:
             name: Start container and verify it's healthy
             command: |
@@ -55,8 +55,8 @@ jobs:
             command: |
               if [[ $CIRCLE_BRANCH == 'master' ]]; then
                   docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
-                  docker push $IMAGE_NAME:$CIRCLE_SHA1
-                  docker push $IMAGE_NAME
+                  docker push docker.io/andspuds/flight-info-api:$CIRCLE_SHA1
+                  docker push docker.io/andspuds/flight-info-api
               else
                   echo Skipping this step as we are not on 'master' branch
               fi
