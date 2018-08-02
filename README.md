@@ -38,6 +38,7 @@ yarn install
 docker build -t andspuds/flight-info-api .
 ```
 
+
 ## Run
 
 ### Yarn
