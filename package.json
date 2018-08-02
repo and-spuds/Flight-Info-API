@@ -39,6 +39,7 @@
     "swagger-ui-express": "^3.0.10"
   },
   "jest": {
+    "testURL": "http://localhost/",
     "coverageThreshold": {
       "global": {
         "branches": 80,
