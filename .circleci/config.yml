@@ -42,7 +42,7 @@ jobs:
             at: .
         - run:
             name: Build container with the git commit sha version and latest version
-            command: docker build -t flight-info-api:$CIRCLE_SHA1 -t flight-info-api .
+            command: docker build -t andspuds/flight-info-api:$CIRCLE_SHA1 -t andspuds/flight-info-api .
         - run:
             name: Start container and verify it's healthy
             command: |
