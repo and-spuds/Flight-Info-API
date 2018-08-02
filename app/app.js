@@ -3,6 +3,7 @@ const bodyParser = require("body-parser").json();
 const pino = require("express-pino-logger")();
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
+require("./index.js");
 
 // Express middleware
 app.use(bodyParser);
