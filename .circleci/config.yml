@@ -4,10 +4,10 @@ defaults: &node
 
 defaults: &docker
   docker:
-    - image: andspuds/flight-info-api
+    - image: quay.io/paulpop/docker-compose
       environment:
         APP_NAME: node-express-service
-        IMAGE_NAME: andspuds/flight-info-api
+        IMAGE_NAME: quay.io/paulpop/node-express-service
 
 version: 2
 jobs:
@@ -60,3 +60,13 @@ jobs:
               else
                   echo Skipping this step as we are not on 'master' branch
               fi
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - docker:
+          context: default
+          requires:
+            - build
