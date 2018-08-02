@@ -53,13 +53,10 @@ jobs:
         - run:
             name: Push image to Dockerhub
             command: |
-              if [[ $CIRCLE_BRANCH == 'master' ]]; then
-                  docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
-                  docker push $IMAGE_NAME:$CIRCLE_SHA1
-                  docker push $IMAGE_NAME
-              else
-                  echo Skipping this step as we are not on 'master' branch
-              fi
+                docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
+                docker push http://dockerhub.com/andspuds/$IMAGE_NAME:$CIRCLE_SHA1
+                docker push http://dockerhub.com/andspuds/$IMAGE_NAME
+                echo Skipping this step as we are not on 'master' branch
 
 workflows:
   version: 2
