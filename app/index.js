@@ -1,6 +1,8 @@
 const Sequelize = require("sequelize");
 const data = require("./dummyData.json");
 
+/* istanbul ignore next */
+
 const sequelize = new Sequelize(null, null, null, {
   host: "localhost",
   dialect: "sqlite",
