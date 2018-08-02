@@ -2,9 +2,9 @@
 
 # Node Express Service
 
-[![CircleCI](https://circleci.com/gh/paul-pop/node-express-service.svg?style=svg)](https://circleci.com/gh/paul-pop/node-express-service)
-[![codecov](https://codecov.io/gh/paul-pop/node-express-service/branch/master/graph/badge.svg)](https://codecov.io/gh/paul-pop/node-express-service)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/46da78d1ecde4adb84926e2b0f806ee8)](https://www.codacy.com/app/paul-pop/node-express-service?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=paul-pop/node-express-service&amp;utm_campaign=Badge_Grade)
+[![CircleCI](https://circleci.com/gh/and-spuds/Flight-Info-API.svg?style=svg)](https://circleci.com/gh/and-spuds/Flight-Info-API)
+[![codecov](https://codecov.io/gh/and-spuds/Flight-Info-API/branch/master/graph/badge.svg)](https://codecov.io/gh/and-spuds/Flight-Info-API)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/339f25c83c65484a9a20cfec9c6a9af6)](https://app.codacy.com/project/flimflamjim/Flight-Info-API/dashboard)
 
 This is a skeleton service that uses NodeJS 8 and Express. It contains the following:
 
