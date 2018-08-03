@@ -6,6 +6,7 @@ ENV ENVIRONMENT default
 
 COPY app/ ./app/
 COPY package.json ./
+COPY yarn.lock ./
 
 RUN yarn install --production
 
