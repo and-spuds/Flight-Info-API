@@ -83,4 +83,4 @@ workflows:
             - build
       - deploy:
           requires:
-            - promote
+            - docker
