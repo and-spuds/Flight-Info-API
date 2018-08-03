@@ -13,8 +13,8 @@
   },
   "private": true,
   "scripts": {
-    "serve": "ENVIRONMENT=dev nodemon app/server.js",
-    "forever": "forever app/server.js",
+    "serve": "ENVIRONMENT=dev JWT_SECRET=microservices-in-anger-course-rulz nodemon app/server.js",
+    "forever": "JWT_SECRET=microservices-in-anger-course-rulz forever app/server.js",
     "lint": "eslint -c .eslintrc app/**/*.js tests/**/*.js",
     "test": "jest --coverage",
     "precommit": "lint-staged"
@@ -34,6 +34,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
+    "express-jwt": "^5.3.1",
     "express-pino-logger": "^3.0.2",
     "forever": "^0.15.3",
     "swagger-ui-express": "^3.0.10"
