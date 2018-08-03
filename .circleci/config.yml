@@ -71,9 +71,8 @@ jobs:
         - run:
             name: Deploy latest image
             command: |
-              ssh -o StrictHostKeyChecking=no -NL localhost:2374:/var/run/docker.sock docker@35.178.196.240 &
-              export DOCKER_HOST=localhost:2374
-              docker service update --image andspuds/flight-info-api:$CIRCLE_SHA1 flight-info-api
+              ssh -o "StrictHostKeyChecking=no" docker@35.178.196.240 \
+              "docker service update --image andspuds/flight-info-api:$CIRCLE_SHA1 flight-info-api"
 
 workflows:
   version: 2
