@@ -20,6 +20,7 @@ module.exports = (req, res) => {
   try {
     publishSNS(snsPayload, topicArn);
   } catch (error) {
+    /* istanbul ignore next */
     logger.error(error.message);
   }
 };

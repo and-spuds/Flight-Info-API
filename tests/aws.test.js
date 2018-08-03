@@ -9,7 +9,7 @@ describe("AWS Publish", () => {
 
   it("It should throw Error when topicArn is empty", () => {
     expect(() => {
-      publishSNS({});
+      publishSNS({}, "");
     }).toThrow("Topic ARN is not valid");
   });
 });

@@ -12,6 +12,7 @@ const publishSNS = (payload, topicArn) => {
     throw new TypeError("payload is not an object");
   }
 
+  /* istanbul ignore next */
   if (!topicArn || !topicArn.length) {
     throw new Error("Topic ARN is not valid");
   }
