@@ -19,8 +19,9 @@ app.use(pino);
 // Express routes
 const router = express.Router();
 
+/* istanbul ignore next */
 router.all(
-  "*",
+  "/flights/*",
   jwtMiddleware({
     secret: JWT_SECRET,
     getToken: function(req) {
@@ -31,20 +32,15 @@ router.all(
         // Handle token presented as a Bearer token in the Authorization header
         return req.headers.authorization.split(" ")[1];
       }
-
       return null;
     }
   })
 );
 
-router.get("/", (req, res) => {
-  res.json({ message: "Welcome to the Flight API!" });
-});
-
 router.get("/health", require("./routes/health"));
-router.get("/api/:name", require("./routes/api"));
-
 router.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+router.patch("/flights/:id", require("./routes/update"));
 
 app.use("/", router);
 

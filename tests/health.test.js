@@ -1,7 +1,12 @@
+let app;
 const request = require("supertest");
-const app = require("../app/app");
 
 describe("GET /health", () => {
+  beforeAll(() => {
+    process.env.JWT_SECRET = "microservices-in-anger-course-rulz";
+    app = require("../app/app");
+  });
+
   it("It should return 404 for an invalid path", async () => {
     const response = await request(app).get("/healthz");
     expect(response.statusCode).toBe(404);
