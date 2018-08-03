@@ -61,10 +61,7 @@ jobs:
                   echo Skipping this step as we are not on 'master' branch
               fi
   deploy:
-      machine:
-        environment:
-            AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
-            AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+      machine: true
       steps:
         - checkout
         - add_ssh_keys:
@@ -75,7 +72,7 @@ jobs:
             command: |
               if [[ $CIRCLE_BRANCH == 'master' ]]; then
                   ssh -o "StrictHostKeyChecking=no" docker@35.178.196.240 \
-                  "docker service --env AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} --env AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} update --image docker.io/andspuds/flight-info-api:$CIRCLE_SHA1 flight-info-api"
+                  "docker service --env-add AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID --env-add AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY update --image docker.io/andspuds/flight-info-api:$CIRCLE_SHA1 flight-info-api"
               else
                   echo Skipping this step as we are not on 'master' branch
               fi
