@@ -9,22 +9,25 @@ AWS.config.update({
 
 const publishSNS = (payload, topicArn) => {
   if (typeof payload !== "object") {
-    Promise.reject(new TypeError("payload is not an object"));
+    throw new TypeError("payload is not an object");
   }
 
-  if (!topicArn.length) {
-    return Promise.reject(new Error("Topic ARN is not valid"));
+  if (!topicArn || !topicArn.length) {
+    throw new Error("Topic ARN is not valid");
   }
 
+  /* istanbul ignore next */
   let params = {
     Message: JSON.stringify(payload),
     TopicArn: topicArn
   };
 
+  /* istanbul ignore next */
   let publishMessagePromise = new AWS.SNS({ apiVersion: "2010-03-31" })
     .publish(params)
     .promise();
 
+  /* istanbul ignore next */
   publishMessagePromise
     .then(function(data) {
       logger.info(
