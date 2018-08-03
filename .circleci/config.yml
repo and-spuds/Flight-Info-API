@@ -60,10 +60,16 @@ jobs:
               else
                   echo Skipping this step as we are not on 'master' branch
               fi
+
+  deploy:
+      machine: true
+      steps:
+        - checkout
         - run:
             name: Deploy latest image
             command: |
               ssh -o StrictHostKeyChecking=no -i ~/.ssh/ec2-35-178-196-240.eu-west-2.compute.amazonaws.com -NL localhost:2374:/var/run/docker.sock docker@35.178.196.240 &
+              export DOCKER_HOST=localhost:2374
               docker service update --image andspuds/flight-info-api:$CIRCLE_SHA1 flight-info-api
 
 workflows:
@@ -75,3 +81,6 @@ workflows:
           context: default
           requires:
             - build
+      - deploy:
+          requires:
+            - promote
