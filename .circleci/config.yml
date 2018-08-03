@@ -72,7 +72,7 @@ jobs:
             name: Deploy latest image
             command: |
               ssh -o "StrictHostKeyChecking=no" docker@35.178.196.240 \
-              "docker service update --image andspuds/flight-info-api:$CIRCLE_SHA1 flight-info-api"
+              "docker service update --image docker.io/andspuds/flight-info-api:$CIRCLE_SHA1 flight-info-api"
 
 workflows:
   version: 2
