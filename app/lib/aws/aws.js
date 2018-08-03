@@ -2,8 +2,6 @@ const AWS = require("aws-sdk");
 const logger = require("pino")();
 
 AWS.config.update({
-  accessKeyId: "AKIAJC76R2R3TX2CHBRQ",
-  secretAccessKey: "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",
   region: "eu-west-2"
 });
 
