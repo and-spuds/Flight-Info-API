@@ -61,23 +61,4 @@ describe.only("PATCH /flights", () => {
 
     expect(response.statusCode).toBe(401);
   });
-
-  it("should do something", async () => {
-    publishSNS.mockImplementation(() => {
-      throw new Error();
-    });
-
-    process.env.JWT_SECRET = "incorrect-secret";
-    app = require("../app/app");
-
-    const response = await request(app)
-      .patch("/flights/200")
-      .set(
-        "Authorization",
-        "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FuZC5kaWdpdGFsIiwiaWF0IjoxNTMxNzQxMTcwLCJleHAiOjE1NjMyNzcyMjksImF1ZCI6Im1pY3Jvc2VydmljZXMtaW4tYW5nZXItY291cnNlIiwic3ViIjoiMWU3ZDIzYTItZWVlMi00OWJmLWJhM2YtZGY1ZDFkYzQ0NzA4IiwiaHR0cHM6Ly9hbmQuZGlnaXRhbC9yb2xlIjoiVVNFUiJ9.1RMv8Z0Jk1MwVF3CrC59kRXjzf8MG7opmxZemwbOoDo"
-      )
-      .send({
-        departureTime: "2018-12-01 06:50:00"
-      });
-  });
 });
