@@ -16,6 +16,6 @@ describe("GET /health", () => {
   it("It should retrieve the status of the app", async () => {
     const response = await request(app).get("/health");
     expect(response.statusCode).toBe(200);
-    expect(response.body).toEqual({ status: "UP" });
+    expect(response.body).toEqual({ status: "FLIGHT-INFO-API-UP" });
   });
 });

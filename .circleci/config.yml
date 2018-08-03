@@ -60,7 +60,22 @@ jobs:
               else
                   echo Skipping this step as we are not on 'master' branch
               fi
-
+  deploy:
+      machine: true
+      steps:
+        - checkout
+        - add_ssh_keys:
+            fingerprints:
+              - "02:86:26:5b:4e:e6:eb:ea:3b:e6:27:6f:ad:27:88:98"
+        - run:
+            name: Deploy latest image
+            command: |
+              if [[ $CIRCLE_BRANCH == 'master' ]]; then
+                  ssh -o "StrictHostKeyChecking=no" docker@35.178.196.240 \
+                  "docker service update --image docker.io/andspuds/flight-info-api:$CIRCLE_SHA1 flight-info-api"
+              else
+                  echo Skipping this step as we are not on 'master' branch
+              fi
 workflows:
   version: 2
   build-and-deploy:
@@ -70,3 +85,6 @@ workflows:
           context: default
           requires:
             - build
+      - deploy:
+          requires:
+            - docker
