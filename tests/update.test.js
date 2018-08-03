@@ -1,5 +1,6 @@
 let app;
 const request = require("supertest");
+jest.mock("../app/lib/aws/aws");
 
 describe.only("PATCH /flights", () => {
   beforeEach(() => {
