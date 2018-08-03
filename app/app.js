@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const jwtMiddleware = require("express-jwt");
 const bodyParser = require("body-parser");
 const pino = require("express-pino-logger")();
@@ -9,6 +10,9 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 // Create App
 const app = express();
+
+// Enable CORS
+app.use(cors({ origin: "http://localhost:8080" }));
 
 // For each request, parse request body into a JavaScript object
 app.use(bodyParser.json());
