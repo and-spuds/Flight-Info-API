@@ -65,6 +65,9 @@ jobs:
       machine: true
       steps:
         - checkout
+        - add_ssh_keys:
+            fingerprints:
+              - "02:86:26:5b:4e:e6:eb:ea:3b:e6:27:6f:ad:27:88:98"
         - run:
             name: Deploy latest image
             command: |
