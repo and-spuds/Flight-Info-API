@@ -1,3 +1,3 @@
 module.exports = (req, res) => {
-  res.send({ status: "UP" });
+  res.send({ status: "FLIGHT-INFO-API-UP" });
 };
