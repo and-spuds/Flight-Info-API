@@ -19,6 +19,9 @@ app.use(pino);
 // Express routes
 const router = express.Router();
 
+router.get("/health", require("./routes/health"));
+router.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 /* istanbul ignore next */
 router.all(
   "/flights/*",
@@ -36,9 +39,6 @@ router.all(
     }
   })
 );
-
-router.get("/health", require("./routes/health"));
-router.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 router.patch("/flights/:id", require("./routes/update"));
 

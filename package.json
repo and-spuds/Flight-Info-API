@@ -14,7 +14,7 @@
   "private": true,
   "scripts": {
     "serve": "ENVIRONMENT=dev JWT_SECRET=microservices-in-anger-course-rulz nodemon app/server.js",
-    "forever": "forever app/server.js",
+    "forever": "JWT_SECRET=microservices-in-anger-course-rulz forever app/server.js",
     "lint": "eslint -c .eslintrc app/**/*.js tests/**/*.js",
     "test": "jest --coverage",
     "precommit": "lint-staged"
