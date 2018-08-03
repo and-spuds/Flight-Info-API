@@ -53,10 +53,13 @@ jobs:
         - run:
             name: Push image to Dockerhub
             command: |
-              docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
-              docker push docker.io/andspuds/flight-info-api:$CIRCLE_SHA1
-              docker push docker.io/andspuds/flight-info-api
-
+              if [[ $CIRCLE_BRANCH == 'master' ]]; then
+                  docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
+                  docker push docker.io/andspuds/flight-info-api:$CIRCLE_SHA1
+                  docker push docker.io/andspuds/flight-info-api
+              else
+                  echo Skipping this step as we are not on 'master' branch
+              fi
   deploy:
       machine: true
       steps:
@@ -67,9 +70,12 @@ jobs:
         - run:
             name: Deploy latest image
             command: |
-              ssh -o "StrictHostKeyChecking=no" docker@35.178.196.240 \
-              "docker service update --image docker.io/andspuds/flight-info-api:$CIRCLE_SHA1 flight-info-api"
-
+              if [[ $CIRCLE_BRANCH == 'master' ]]; then
+                  ssh -o "StrictHostKeyChecking=no" docker@35.178.196.240 \
+                  "docker service update --image docker.io/andspuds/flight-info-api:$CIRCLE_SHA1 flight-info-api"
+              else
+                  echo Skipping this step as we are not on 'master' branch
+              fi
 workflows:
   version: 2
   build-and-deploy:
