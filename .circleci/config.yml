@@ -61,7 +61,10 @@ jobs:
                   echo Skipping this step as we are not on 'master' branch
               fi
   deploy:
-      machine: true
+      machine:
+        environment:
+            AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+            AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
       steps:
         - checkout
         - add_ssh_keys:
