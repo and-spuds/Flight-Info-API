@@ -1,6 +1,5 @@
 let app;
 const request = require("supertest");
-const publishSNS = require("../app/lib/aws/aws").publishSNS;
 jest.mock("../app/lib/aws/aws");
 
 describe.only("PATCH /flights", () => {
