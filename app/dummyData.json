@@ -1,0 +1,16 @@
+[{
+  "flightID": 1,
+  "departureTime": "2018-12-01 16:00:00"
+},{
+  "flightID": 2,
+  "departureTime": "2018-09-21 09:00:00"
+},{
+  "flightID": 3,
+  "departureTime": "2018-04-16 20:00:00"
+},{
+  "flightID": 4,
+  "departureTime": "2019-01-20 10:00:00"
+},{
+  "flightID": 5,
+  "departureTime": "2017-05-01 17:00:00"
+}]
